@@ -10,7 +10,7 @@
 Windows 11, Visual Studio Code, Mysql Workbench ,Git
 
 # Description:
-This an REST API Performing C.R.U.D (CREATE,READ,UPDATE,DELETE) operations also Autheticating a User using its 'Username' and 'Password'. Where it stores Data using Mysql Server ,It is designed to recieve request and get the response in JSON format as shown in the Screen screenshots using PORT : 1020. This API can Create a User with details like : Firstname. Surname, Username, Password, Address , Pincode , Phone Number , E-mail . API uses for further operations as : Updating User details , Authicating User details, Showing all Users with their details, Showing Specific user with details , Deleting a user and its details, Deleting all records in the database . Note:- This the Application is for Demo Purpose only.
+This is an REST API Performing C.R.U.D (CREATE,READ,UPDATE,DELETE) operations also Autheticating a User using its 'Username' and 'Password'. Where it stores Data using Mysql Server ,It is designed to recieve request and get the response in JSON format as shown in the Screen screenshots using PORT : 1020. This API can Create a User with details like : Firstname. Surname, Username, Password, Address , Pincode , Phone Number , E-mail . API uses for further operations as : Updating User details , Authicating User details, Showing all Users with their details, Showing Specific user with details , Deleting a user and its details, Deleting all records in the database . Note:- This the Application is for Demo Purpose only.
 ** Base JSON File which will be used to get response according to the actions required with appropriate methods **
 {
     "Address": "",
