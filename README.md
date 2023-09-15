@@ -24,7 +24,7 @@ This an REST API Performing C.R.U.D (CREATE,READ,UPDATE,DELETE) operations also 
 }
 API as different URLs for operations like :-
 1) User Create (url:  http://127.0.0.1:1020/usercerate ,METHOD ="POST")
-2) User Update  (url:  http://127.0.0.1:1020/userupdate ,METHOD ="UPDATE")
+2) User Update  (url:  http://127.0.0.1:1020/userupdate ,METHOD ="PUT")
 3) Authentication of User (url:  http://127.0.0.1:1020/checkuser ,METHOD ="POST")
 4) Showing all Users in Database (url:  http://127.0.0.1:1020/showalluser ,METHOD ="GET")
 5) Showing Specific user (url:  http://127.0.0.1:1020/showuser ,METHOD ="GET")
