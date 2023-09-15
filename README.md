@@ -1,7 +1,7 @@
 # Python-Crud_Auth_API
 
 # Technologoies Used: 
-1) Python 3.115
+1) Python 3.11.5
 2) Mysql Server
 3) Postman Software
 4) Flask Micro Web FrameWork
