@@ -51,7 +51,7 @@ def create():
     except IOError:
         return Exception
 
-@app.route('/userupdate',methods=['POST'])
+@app.route('/userupdate',methods=['PUT'])
 def update():
     try:
         res=request.json
@@ -167,7 +167,7 @@ def deleteall():
     pp=json.dumps(res)
     return pp
 
-@app.route('/checkuser',methods=['GET'])
+@app.route('/checkuser',methods=['POST'])
 def authUser():
     res=request.json
     un=None
