@@ -81,7 +81,7 @@ class authdb:
         if self.connection()==True:
             ad=self.g.cursor()
             try:
-                t=ad.execute(f"Select * from `UserAuth` where Username='{uname}'")
+                t=ad.execute(f"Select * from UserAuth where Username='{uname}'")
                 y=ad.fetchall()
                 return y
             except IOError:
@@ -93,7 +93,7 @@ class authdb:
         if self.connection()==True:
             ad=self.g.cursor()
             try:
-                t=ad.execute("Select * from UserAuth")
+                ad.execute("Select * from UserAuth")
                 y=ad.fetchall()
                 return y
             except IOError:
@@ -101,15 +101,26 @@ class authdb:
         else:
             return ConnectionAbortedError
         
-    def deleteuser(self,id):
+    def deleteuser(self,uname):
         if self.connection()==True:
             ad=self.g.cursor()
             try:
-                cmd=(f"delete from UserAuth where ID={id}")
-                ad.execute(cmd)
-                self.g.commit()
-                y=ad.fetchall()
-                return True
+                op=None
+                ad.execute(f"SELECT ID from UserAuth where Username='{uname}'")
+                op=ad.fetchone()
+                # print(op[0])
+                if op!=None:
+                    for i in op:
+                        if i!=0:  
+                            cmd=(f"delete from UserAuth where Username='{uname}'")
+                            ad.execute(cmd)
+                            self.g.commit()
+                            # y=ad.fetchall()
+                            return True
+                        else:
+                            return False
+                else:
+                    return False
             except IOError:
                 return Exception
         else:
@@ -169,9 +180,10 @@ if __name__=="__main__":
     # p=au.createtable()
     # p=au.deletable()
     # p=au.readalluser()
-    # p=au.readuser(uname="varunHample03",ids='1')
+    # p=au.readuser(uname="ShrutiNK05")
+    p=au.deleteuser(uname="Sheetal.kumar03")
     # p=au.auth_user(uname="varunHample03",passd="test@123")
-    p=au.auth_user(uname="Aman.Trivedi)3",passd="test@123")
+    # p=au.auth_user(uname="Aman.Trivedi)3",passd="test@123")
   
     # p=au.createuser(fname='Varun',surname='hample',addr="hill top near sarana road solan himanchal pradesh",
     #                     pinc=440102,uname="varunHample03",paswd="test@123",Pnumber=1234567890,mail="varun.hample03@gmail.com")

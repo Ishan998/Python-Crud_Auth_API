@@ -15,7 +15,7 @@ def create():
     # required is name, surname, username, address, pincode, phone number, e-mail,Password
     try:
         res=request.json
-        a=0
+        # a=0
         sn=None
         fn=None
         ad=None
@@ -96,7 +96,7 @@ def update():
         if save:
             res.update({'operation':'user details updated'})
         else:
-            res.update({'operation':'user details updated'})
+            res.update({'operation':'user details not updated'})
         pp=json.dumps(res)
         return pp
     except IOError:
@@ -106,12 +106,14 @@ def update():
 def deluser():
     res=request.json
     for key,value in list(res.items()):
-        if key =="uname":
-            yu=t().deleteuser(id=value)
+        if key=="Username":
+            yu=t().deleteuser(uname=value)
             if yu:
                 res.update({'status':'Deleted successfully'})
             else:
-                res.update({'status':'operation unsuccesfull'})
+                res.update({'status':'Operation unsuccesfull'})
+        else:
+             res.update({'status':'Username Not Found'})
     pp=json.dumps(res)
     return pp
 
@@ -134,19 +136,20 @@ def alluser():
 @app.route('/showuser',methods=['GET'])
 def showuser():
     p=[]
+    rest={}
     res=request.json
     for key,val in list(res.items()):
         if key=="Username":
             yu=t().readuser(uname=val)
             data=['id','Firstname','Surname','Address','Pincode','Username','Password','Phone Number','E-mail']
             for i in yu:
-                res = {data[j]: i[j] for j in range(len(i))}        
-                p.append(res)
-    pp=json.dumps(res)
+                rest = {data[j]: i[j] for j in range(len(i))}        
+                p.append(rest)
+    pp=json.dumps(p)
     return pp
     
 
-@app.route('/deletealluser',methods=['POST'])
+@app.route('/deletealluser',methods=['DELETE'])
 def deleteall():
     res=request.json
     for key,val in list(res.items()):
@@ -157,6 +160,10 @@ def deleteall():
                     res.update({'status':'All records Deleted successfully'})
                 else:
                     res.update({'status':'operation unsuccesfull'})
+            else:
+                 res.update({'status':'operation untriggered'})
+        else:
+             res.update({'status':'trigger delete all not Found'})
     pp=json.dumps(res)
     return pp
 
